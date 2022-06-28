@@ -1,0 +1,129 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+
+    <div id="letterZone">
+
+      <ion-card id="carta">
+        <strong *ngIf="palabras.length!=0">{{word}}</strong>
+      </ion-card>
+
+    </div>
+
+    
+    <div id="tools">
+      <div id="cards">
+<!-- 
+        <ion-button color="white" (click)="previous()">
+          <ion-icon name="arrow-back-outline" size="large" color="medium"></ion-icon>            
+        </ion-button>
+    
+     -->
+        <ion-button color="white" (click)="next()">
+          <p>NEXT</p>
+            <!-- <ion-icon name="arrow-forward-outline" size="large" color="medium"></ion-icon>       -->      
+        </ion-button>
+  
+      </div>
+      
+      
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div id="modalButton">
+        <div>                                        <!-- add new word -->
+          <ion-button id="open-modal" expand="block">Добавить новое слово</ion-button>
+        </div>
+       
+        <div>
+          <ion-modal #modal trigger="open-modal">
+            <ng-template>
+              <ion-content>
+                <ion-toolbar>
+                  <ion-title>Привет!</ion-title>
+                  <ion-buttons slot="end">                          <!-- close -->
+                    <ion-button color="light" (click)="modal.dismiss()">Закрыть</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+                <ion-list>
+                  <ion-item>
+                    <div>
+                      <ion-input placeholder="Palabra" [(ngModel)]="palabra.enespanol"></ion-input>
+                    </div> 
+                  </ion-item>
+  
+                  <ion-item>
+                    <div>
+                      <ion-input placeholder="Слово" [(ngModel)]="palabra.enruso"></ion-input>
+                    </div>
+                  </ion-item>               
+                </ion-list>
+                <div id="buttonAddWord">      <!-- Add word -->
+                  <ion-button color="primary" (click)="add()">Добавить слово</ion-button>
+                </div>
+                
+              </ion-content>
+  
+           
+  
+            </ng-template>
+          </ion-modal>
+        </div>
+          
+        
+  
+      </div>
+   
+  
+
+    </div>
+
+
+    
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</ion-content>
