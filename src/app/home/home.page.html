@@ -1,10 +1,19 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-
     <div id="letterZone">
+      <ion-card id="carta" (click)="espanol=!espanol" >
+        <ion-card-content>
+          <div *ngIf="palabras.length!=0">
+            <strong *ngIf="espanol">{{wordEsp}}</strong>
+            <strong *ngIf="!espanol">{{wordRus}}</strong>
+          </div>
+  
+          <div *ngIf="palabras.length==0">
+            <p *ngIf="espanol">no words</p>
+          </div>
+        </ion-card-content>
 
-      <ion-card id="carta">
-        <strong *ngIf="palabras.length!=0">{{word}}</strong>
+
       </ion-card>
 
     </div>
@@ -19,7 +28,7 @@
     
      -->
         <ion-button color="white" (click)="next()">
-          <p>NEXT</p>
+          <p>СЛЕДУЮЩИЙ</p>
             <!-- <ion-icon name="arrow-forward-outline" size="large" color="medium"></ion-icon>       -->      
         </ion-button>
   

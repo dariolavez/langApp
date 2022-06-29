@@ -12,16 +12,27 @@
 
 }
 
+
 #letterZone{
   height: 75%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #letterZone ion-card{
-  width: 200px;
-  height: 300px;
+  width: 90%;
+  height: 350px;
 }
+
 #carta {
-  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+strong {
+  letter-spacing: 3px;
 }
 
 #tools{

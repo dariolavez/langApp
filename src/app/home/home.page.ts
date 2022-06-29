@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   constructor() {}
 
-
+ngOnInit(): void {
+  this.next()
+}
 
 
   previous(){
@@ -17,19 +19,24 @@ export class HomePage {
   }
 
   next(){
-
-    let number = Math.floor(Math.random() * this.palabras.length)
-    this.word = this.palabras[number].espanol
-
+    if(this.palabras.length!=0){
+      let number = Math.floor(Math.random() * this.palabras.length)
+      this.wordEsp = this.palabras[number].espanol
+      this.wordRus = this.palabras[number].ruso
+    }
 
   }
+
+  espanol:boolean=true;
 
   palabra = {
     enespanol:"",
     enruso:"",
   }
 
-  word:string=""
+  wordEsp:string=""
+  wordRus:string=""
+
   palabras = [
     {espanol:'oso', ruso:'bear'},
     {espanol:'uva', ruso:'grape'},
@@ -43,7 +50,6 @@ export class HomePage {
     this.palabras.push({espanol:this.palabra.enespanol, ruso:this.palabra.enruso})
     this.palabra.enespanol="";
     this.palabra.enruso="";
-
   }
 
 
