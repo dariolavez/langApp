@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Palavra } from './Palavra';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit{
 
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
 ngOnInit(): void {
   this.next()
 }
 
+  apiURL:string = ""
 
-  previous(){
-    console.log("previous")
+  getItems(): Observable<Palavra[]>{
+    return this.http.get<Palavra[]>(this.apiURL)     
   }
+
 
   next(){
     if(this.palabras.length!=0){
