@@ -27,10 +27,11 @@ async function getWords(req,res){
 
 function addWord(req,res){
 
-    let insertQuery = `insert into ${config.table} values ('${req.body.espanol}', '${req.body.ruso}')`;
+    console.log(req.body)
+    let insertQuery = `insert into ${config.table} values ('${req.body.enespanol}', '${req.body.enruso}')`;
     pool.query(insertQuery, (err, result)=>{
-        if(!err){
-           return res.status(200).send(["Item successfully inserted", req.body])
+        if(!err){            
+           return res.status(200).send({status:200, message:"Item successfully inserted"})
         }
         else { console.log(err) ;return res.status(401).send({message:"fail"})}
     })

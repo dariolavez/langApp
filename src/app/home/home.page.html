@@ -5,8 +5,8 @@
       <ion-card id="carta" (click)="espanol=!espanol" >
         <ion-card-content>
           <div *ngIf="palabras.length!=0">
-            <strong *ngIf="espanol">{{wordEsp}}</strong>
-            <strong *ngIf="!espanol">{{wordRus}}</strong>
+            <strong [ngStyle]="{'font-size.px':25}" *ngIf="espanol">{{wordEsp}}</strong>
+            <strong [ngStyle]="{'font-size.px':25}" *ngIf="!espanol">{{wordRus}}</strong>
           </div>
   
           <div *ngIf="palabras.length==0">
@@ -75,7 +75,7 @@
                   </ion-item>               
                 </ion-list>
                 <div id="buttonAddWord">      <!-- Add word -->
-                  <ion-button color="primary" (click)="add()">Добавить слово</ion-button>
+                  <ion-button color="primary" (click)="callAddWord()">Добавить слово</ion-button>
                 </div>
                 
               </ion-content>
