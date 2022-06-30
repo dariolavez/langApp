@@ -6,6 +6,7 @@ const api = express.Router()
 const palabraCtrl = require('../controllers/palabras')
 
 api.post('/addword', palabraCtrl.addWord)
+api.get('/getwords', palabraCtrl.getWords)
 
 
 
