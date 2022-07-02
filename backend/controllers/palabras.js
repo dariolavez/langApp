@@ -11,6 +11,9 @@ const pool = new Pool({
     max: 20,
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
+    ssl: {
+        rejectUnauthorized: false
+      }
 })
 
 
@@ -28,7 +31,7 @@ async function getWords(req,res){
 function addWord(req,res){
 
     console.log(req.body)
-    let insertQuery = `insert into ${config.table} values ('${req.body.enespanol}', '${req.body.enruso}')`;
+    let insertQuery = `insert into ${config.table} values ('${req.body.espanol}', '${req.body.ruso}')`;
     pool.query(insertQuery, (err, result)=>{
         if(!err){            
            return res.status(200).send({status:200, message:"Item successfully inserted"})
