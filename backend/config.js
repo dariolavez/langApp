@@ -9,3 +9,9 @@ module.exports = {
     database: process.env.DATABASE,
     table: process.env.TABLE,
 }
+
+
+
+
+
+

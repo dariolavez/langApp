@@ -2,12 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Palavra } from './Palavra';
+import { environment } from 'src/environments/environment.prod';
+//import { environment } from 'src/environments/environment';
+
+
 
 const httpOtions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
   })
 }
+
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -28,10 +36,9 @@ ngOnInit(): void {
   this.getItems().subscribe((data)=>{this.palabras=data; this.next()})  
 }
 
-  apiURL:string = "http://localhost:3000/getwords"
 
   getItems(): Observable<Palavra[]>{
-    return this.http.get<Palavra[]>(this.apiURL)     
+    return this.http.get<Palavra[]>(environment.getwords)     
   }
 
 
@@ -54,11 +61,10 @@ ngOnInit(): void {
   wordEsp:string=""
   wordRus:string=""
 
-  apiURL2:string = "http://localhost:3000/addword"
 
   addWord():any{
     if(!this.palabra.enespanol || !this.palabra.enruso)return
-    return this.http.post<Palavra>(this.apiURL2, this.palabra, httpOtions) 
+    return this.http.post<Palavra>(environment.addword, this.palabra, httpOtions) 
   }
 
   callAddWord(){

@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  getwords:"https://langapppg.herokuapp.com/getwords",
+  addword:"https://langapppg.herokuapp.com/addword",
 };

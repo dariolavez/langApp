@@ -1,7 +1,6 @@
 const config = require('../config')
 const { Pool } = require('pg')
 
-
 const pool = new Pool({
     host: config.host,
     user: config.user,
@@ -16,14 +15,11 @@ const pool = new Pool({
       }
 })
 
-
-
-
 async function getWords(req,res){
 
     await pool.query(`select * from ${config.table}`, (err, result)=>{      
         if(!err)return res.status(200).send(result.rows)   
-        else { console.log(err) ;return res.status(401).send({message:"fail"})}
+        else { console.log(err) ;return res.send({msj:err.error, message:err})}
     })
 
 }
