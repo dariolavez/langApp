@@ -33,7 +33,21 @@ export class HomePage implements OnInit{
 
 ngOnInit(): void {
   this.next()
-  this.getItems().subscribe((data)=>{this.palabras=data; this.next()})  
+  this.getItems().subscribe((data)=>{
+
+    let obj={}
+
+    for (let index in data){
+      obj=Object.assign({},data[index], {correct:false, wrong:false})
+      this.palabras.push(obj)
+    }
+
+    console.log(this.palabras)
+    
+
+    this.next()
+  
+  })  
 }
 
 
@@ -41,12 +55,15 @@ ngOnInit(): void {
     return this.http.get<Palavra[]>(environment.getwords)     
   }
 
-
+  word:string=""
+  wordindex:number
   next(){
     if(this.palabras.length!=0){
       let number = Math.floor(Math.random() * this.palabras.length)
-      this.wordEsp = this.palabras[number].espanol
-      this.wordRus = this.palabras[number].ruso
+      this.word = this.palabras[number]
+      this.wordindex = number
+      this.wrongselected = this.palabras[number].wrong      
+      this.correctselected = this.palabras[number].correct
     }
   }
 
@@ -58,8 +75,7 @@ ngOnInit(): void {
     enruso:"",
   }
 
-  wordEsp:string=""
-  wordRus:string=""
+
 
 
   addWord():any{
@@ -87,10 +103,25 @@ ngOnInit(): void {
     this.palabra.enruso="";
 
   }
-
  */
 
 
+
+  wrongselected:boolean=false
+  votewrong(number:number){
+    
+    if(this.correctselected)this.correctselected=false;
+    this.wrongselected=!this.wrongselected;
+    this.palabras[number].wrong=!this.palabras[number].wrong
+  }
+  correctselected:boolean=false
+  votecorrect(number:number){
+    if(this.wrongselected)this.wrongselected=false;
+    this.correctselected=!this.correctselected;
+    this.palabras[number].correct=!this.palabras[number].correct
+    console.log(this.palabras[number].correct)
+    
+  }
 
 
 }

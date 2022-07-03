@@ -2,25 +2,28 @@
   <div id="container">
     <ion-text>Предметы: {{palabras.length}}</ion-text>
     <div id="letterZone">
-      <ion-card id="carta" (click)="espanol=!espanol" >
+      <ion-card id="carta" (click)="espanol=!espanol">
         <ion-card-content>
           <div *ngIf="palabras.length!=0">
-            <strong [ngStyle]="{'font-size.px':25}" *ngIf="espanol">{{wordEsp}}</strong>
-            <strong [ngStyle]="{'font-size.px':25}" *ngIf="!espanol">{{wordRus}}</strong>
+            <strong [ngStyle]="{'font-size.px':25}" *ngIf="espanol">{{word.espanol}}</strong>
+            <strong [ngStyle]="{'font-size.px':25}" *ngIf="!espanol">{{word.ruso}}</strong>
           </div>
-  
           <div *ngIf="palabras.length==0">
             <p *ngIf="espanol">no words</p>
           </div>
         </ion-card-content>
-
-
       </ion-card>
+      <div id="votacion">
+        <div [ngClass]="{'wrongunselected':!wrongselected, 'wrongselected':wrongselected}" (click)="votewrong(wordindex)"></div>
+        <div [ngClass]="{'correctunselected':!correctselected, 'correctselected':correctselected}" (click)="votecorrect(wordindex)"></div>
+      </div>
+
+
 
     </div>
 
     
-    <div id="tools">
+    <div id="tools" >
       <div id="cards">
 <!-- 
         <ion-button color="white" (click)="previous()">
@@ -36,10 +39,10 @@
       </div>
       
       
-  
-  
+  <!--
+ 
       <div id="modalButton">
-        <div>                                        <!-- add new word -->
+        <div>                                         add new word 
           <ion-button id="open-modal" expand="block">Добавить новое слово</ion-button>
         </div>
        
@@ -49,7 +52,7 @@
               <ion-content>
                 <ion-toolbar>
                   <ion-title>Привет!</ion-title>
-                  <ion-buttons slot="end">                          <!-- close -->
+                  <ion-buttons slot="end">                           close 
                     <ion-button color="light" (click)="modal.dismiss()">Закрыть</ion-button>
                   </ion-buttons>
                 </ion-toolbar>
@@ -66,7 +69,7 @@
                     </div>
                   </ion-item>               
                 </ion-list>
-                <div id="buttonAddWord">      <!-- Add word -->
+                <div id="buttonAddWord">      Add word 
                   <ion-button color="primary" (click)="callAddWord()">Добавить слово</ion-button>
                 </div>
                 
@@ -81,6 +84,9 @@
   
       </div>
    
+    -->
+
+
     </div>
 
 
