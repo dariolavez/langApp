@@ -55,8 +55,11 @@ ngOnInit(): void {
     return this.http.get<Palavra[]>(environment.getwords)     
   }
 
-  word:string=""
-  wordindex:number
+  
+  word:string="";
+  wordindex:number;
+  arrCounter = []
+  counter:number=0
   next(){
     if(this.palabras.length!=0){
       let number = Math.floor(Math.random() * this.palabras.length)
@@ -64,7 +67,19 @@ ngOnInit(): void {
       this.wordindex = number
       this.wrongselected = this.palabras[number].wrong      
       this.correctselected = this.palabras[number].correct
+
+        let el = this.arrCounter.find(element=>element===this.palabras[number])
+        if(el)return;
+        this.arrCounter.push(this.palabras[number])
+        this.counter++
+        console.log(this.counter, this.palabras[number].espanol)
+ 
+
     }
+
+
+
+
   }
 
   espanol:boolean=true;
@@ -106,21 +121,27 @@ ngOnInit(): void {
  */
 
 
+  green:number=0;
+  red:number=0;
 
   wrongselected:boolean=false
-  votewrong(number:number){
-    
-    if(this.correctselected)this.correctselected=false;
+  votewrong(number:number){    
+    if(this.correctselected){this.correctselected=false; this.palabras[number].correct=false; this.green--}
+    if(this.wrongselected)this.red--;
+    else{this.red++}
     this.wrongselected=!this.wrongselected;
-    this.palabras[number].wrong=!this.palabras[number].wrong
+    this.palabras[number].wrong=!this.palabras[number].wrong;
+    
   }
   correctselected:boolean=false
   votecorrect(number:number){
-    if(this.wrongselected)this.wrongselected=false;
+    if(this.wrongselected){this.wrongselected=false; this.palabras[number].wrong=false; this.red--}
+    if(this.correctselected)this.green--;
+    else{this.green++}
     this.correctselected=!this.correctselected;
     this.palabras[number].correct=!this.palabras[number].correct
-    console.log(this.palabras[number].correct)
-    
+
+
   }
 
 
