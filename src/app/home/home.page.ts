@@ -56,7 +56,7 @@ ngOnInit(): void {
   }
 
   
-  word:string="";
+  word:any="";
   wordindex:number;
   arrCounter = []
   counter:number=0

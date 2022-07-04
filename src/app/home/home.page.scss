@@ -40,15 +40,17 @@
     width: 150px;
     height: 120px;
     border-style: solid;
-    border-color: #FF0000;  
+    border-color: #FF9393;  
     opacity: .2;
+    border-radius: 10px;
   }
 
  .wrongselected {
     margin-top: 20px;
     width: 150px;
     height: 120px;
-    background-color: #FF0000;
+    background-color: #FF9393;
+    border-radius: 10px;
 
   }
 
@@ -56,15 +58,17 @@
     margin-top: 20px;
     width: 150px;
     height: 120px;
-    background-color: #54FA46;
+    background-color: #94FF93;
+    border-radius: 10px;
   }
   .correctunselected {
     margin-top: 20px;
     width: 150px;
     height: 120px;
     border-style: solid;
-    border-color: #54FA46; 
+    border-color: #94FF93; 
     opacity: .2;
+    border-radius: 10px;
   }
 }
 

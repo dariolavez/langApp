@@ -4,22 +4,22 @@
     <div id="letterZone">
       <div [ngStyle]="{'width':'90%', 'display':'flex', 'justify-content':'space-between'}">
         <div> 
-          <p>Palabras: {{counter}}/{{palabras.length}}</p>
+          <p>Cлова: {{counter}}/{{palabras.length}}</p>
         </div>
         <div [ngStyle]="{'display':'flex', 'width':'120px', 'justify-content':'space-between'}">
           <div [ngStyle]="{'display':'flex'}">
-            <div [ngStyle]="{'width':'20px', 'height':'20px', 'background-color':'#54FA46'}"></div>
+            <div [ngStyle]="{'width':'20px', 'height':'20px', 'background-color':'#94FF93'}"></div>
             <p [ngStyle]="{'margin-left':'7px'}">{{green}}</p>
           </div>
           <div [ngStyle]="{'display':'flex'}">
-            <div [ngStyle]="{'width':'20px', 'height':'20px', 'background-color':'#FF0000'}"></div>
+            <div [ngStyle]="{'width':'20px', 'height':'20px', 'background-color':'#FF9393'}"></div>
             <p [ngStyle]="{'margin-left':'7px'}">{{red}}</p>
           </div>          
         </div>       
       </div>
 
 
-      <ion-card id="carta" (click)="espanol=!espanol">
+      <ion-card mode="ios" id="carta" (click)="espanol=!espanol">
         <ion-card-content>
           <div *ngIf="palabras.length!=0">
             <strong [ngStyle]="{'font-size.px':25}" *ngIf="espanol">{{word.espanol}}</strong>
