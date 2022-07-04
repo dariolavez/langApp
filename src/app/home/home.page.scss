@@ -7,7 +7,9 @@
 }
 
 
+
 #letterZone{
+  margin-top:10px;
   height: 75%;
   width: 100%;
   display: flex;
@@ -18,7 +20,11 @@
 #letterZone ion-card{
   width: 90%;
   height: 350px;
+  margin-top: 10px !important;
+  
 }
+
+
 
 #carta {
   display: flex;
