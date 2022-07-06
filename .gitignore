@@ -32,3 +32,4 @@ npm-debug.log*
 /www
 /backend/node_modules
 /backend/.env
+/mockups

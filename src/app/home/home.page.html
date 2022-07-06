@@ -1,10 +1,12 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-text>Предметы: {{palabras.length}}</ion-text>
+    <!-- <ion-text>Предметы: {{palabras.length}}</ion-text> -->
+    <ion-text>Objetos: {{palabras.length}}</ion-text>
     <div id="letterZone">
       <div [ngStyle]="{'width':'90%', 'display':'flex', 'justify-content':'space-between'}">
         <div> 
-          <p>Cлова: {{counter}}/{{palabras.length}}</p>
+         <!--  <p>Cлова: {{counter}}/{{palabras.length}}</p> -->
+          <p>Palabra: {{counter}}/{{palabras.length}}</p>
         </div>
         <div [ngStyle]="{'display':'flex', 'width':'120px', 'justify-content':'space-between'}">
           <div [ngStyle]="{'display':'flex'}">
@@ -35,84 +37,17 @@
         <div [ngClass]="{'correctunselected':!correctselected, 'correctselected':correctselected}" (click)="votecorrect(wordindex)"></div>
       </div>
 
-
-
     </div>
 
     
     <div id="tools" >
       <div id="cards">
-<!-- 
-        <ion-button color="white" (click)="previous()">
-          <ion-icon name="arrow-back-outline" size="large" color="medium"></ion-icon>            
-        </ion-button>
-    
-     -->
         <ion-button color="white" (click)="next()">
-          <p>СЛЕДУЮЩИЙ</p>
-            <!-- <ion-icon name="arrow-forward-outline" size="large" color="medium"></ion-icon>       -->      
-        </ion-button>
-  
+         <!--  <p>СЛЕДУЮЩИЙ</p> -->
+          <p>Siguiente</p>
+        </ion-button>  
       </div>
-      
-      
-  <!--
- 
-      <div id="modalButton">
-        <div>                                         add new word 
-          <ion-button id="open-modal" expand="block">Добавить новое слово</ion-button>
-        </div>
-       
-        <div>
-          <ion-modal #modal trigger="open-modal">
-            <ng-template>
-              <ion-content>
-                <ion-toolbar>
-                  <ion-title>Привет!</ion-title>
-                  <ion-buttons slot="end">                           close 
-                    <ion-button color="light" (click)="modal.dismiss()">Закрыть</ion-button>
-                  </ion-buttons>
-                </ion-toolbar>
-                <ion-list>
-                  <ion-item>
-                    <div>
-                      <ion-input placeholder="Palabra" [(ngModel)]="palabra.enespanol"></ion-input>
-                    </div> 
-                  </ion-item>
-  
-                  <ion-item>
-                    <div>
-                      <ion-input placeholder="Слово" [(ngModel)]="palabra.enruso"></ion-input>
-                    </div>
-                  </ion-item>               
-                </ion-list>
-                <div id="buttonAddWord">      Add word 
-                  <ion-button color="primary" (click)="callAddWord()">Добавить слово</ion-button>
-                </div>
-                
-              </ion-content>
-  
-           
-  
-            </ng-template>
-          </ion-modal>
-        </div>
-          
-  
-      </div>
-   
-    -->
-
-
     </div>
-
-
-    
-
-   
-
-
-
 
   </div>
 </ion-content>

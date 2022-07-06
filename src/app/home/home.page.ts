@@ -5,18 +5,6 @@ import { Palavra } from './Palavra';
 import { environment } from 'src/environments/environment.prod';
 //import { environment } from 'src/environments/environment';
 
-
-
-const httpOtions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-}
-
-
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -24,32 +12,28 @@ const httpOtions = {
 })
 
 
-
 export class HomePage implements OnInit{
 
   constructor(private http:HttpClient) {}
 
   palabras:any =[]
+  ngOnInit(): void {
+    this.getItems().subscribe((data)=>{
 
-ngOnInit(): void {
-  this.next()
-  this.getItems().subscribe((data)=>{
+      let obj={}
+      let wen = {correct:false, wrong:false}
 
-    let obj={}
+      for (let index in data){
+        obj=Object.assign({},data[index], wen)
+        this.palabras.push(obj)
+      }
 
-    for (let index in data){
-      obj=Object.assign({},data[index], {correct:false, wrong:false})
-      this.palabras.push(obj)
-    }
-
-    console.log(this.palabras)
+      console.log(this.palabras)
+      
+      this.next()
     
-
-    this.next()
-  
-  })  
-}
-
+    })  
+  }
 
   getItems(): Observable<Palavra[]>{
     return this.http.get<Palavra[]>(environment.getwords)     
@@ -73,75 +57,32 @@ ngOnInit(): void {
         this.arrCounter.push(this.palabras[number])
         this.counter++
         console.log(this.counter, this.palabras[number].espanol)
- 
-
     }
-
-
-
-
   }
 
+  //en true empieza en espanol, en false empieza en ruso
   espanol:boolean=true;
-
-//para el value de los inputs
-  palabra = {
-    enespanol:"",
-    enruso:"",
-  }
-
-
-
-
-  addWord():any{
-    if(!this.palabra.enespanol || !this.palabra.enruso)return
-    return this.http.post<Palavra>(environment.addword, this.palabra, httpOtions) 
-  }
-
-  callAddWord(){
-    this.addWord().subscribe((res)=>{
-      if(res.status==200){
-        this.palabras.push({espanol:this.palabra.enespanol, ruso:this.palabra.enruso}); 
-        this.palabra.enespanol="";
-        this.palabra.enruso="";
-      }
-    })
-  }
-
-
-/* 
-  addWord(){
-
-    if(!this.palabra.enespanol || !this.palabra.enruso)return
-    this.palabras.push({espanol:this.palabra.enespanol, ruso:this.palabra.enruso})
-    this.palabra.enespanol="";
-    this.palabra.enruso="";
-
-  }
- */
 
 
   green:number=0;
   red:number=0;
 
   wrongselected:boolean=false
-  votewrong(number:number){    
+  votewrong(number:number){
+    //si el verde esta prendido, apagalo de la vista, del objeto, y restale 1 pto
     if(this.correctselected){this.correctselected=false; this.palabras[number].correct=false; this.green--}
-    if(this.wrongselected)this.red--;
-    else{this.red++}
-    this.wrongselected=!this.wrongselected;
-    this.palabras[number].wrong=!this.palabras[number].wrong;
+    //si el rojo esta prendido, apagalo de la vista, del objeto, y restale 1 pto
+    if(this.wrongselected){this.red--;this.wrongselected=false;this.palabras[number].wrong=false;}
+    //sino, prendelo en la vista, en el objeto, y sumale 1 pto
+    else{this.red++;this.wrongselected=true;this.palabras[number].wrong=true}
+    
     
   }
   correctselected:boolean=false
   votecorrect(number:number){
     if(this.wrongselected){this.wrongselected=false; this.palabras[number].wrong=false; this.red--}
-    if(this.correctselected)this.green--;
-    else{this.green++}
-    this.correctselected=!this.correctselected;
-    this.palabras[number].correct=!this.palabras[number].correct
-
-
+    if(this.correctselected){this.green--;this.correctselected=false; this.palabras[number].correct=false;}
+    else{this.green++;this.correctselected=true;this.palabras[number].correct=true}
   }
 
 
