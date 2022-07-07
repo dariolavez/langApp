@@ -38,7 +38,7 @@ export class HomePage implements OnInit{
   getItems(): Observable<Palavra[]>{
     return this.http.get<Palavra[]>(environment.getwords)     
   }
-
+ 
   
   word:any="";
   wordindex:number;
@@ -75,9 +75,8 @@ export class HomePage implements OnInit{
     if(this.wrongselected){this.red--;this.wrongselected=false;this.palabras[number].wrong=false;}
     //sino, prendelo en la vista, en el objeto, y sumale 1 pto
     else{this.red++;this.wrongselected=true;this.palabras[number].wrong=true}
-    
-    
   }
+
   correctselected:boolean=false
   votecorrect(number:number){
     if(this.wrongselected){this.wrongselected=false; this.palabras[number].wrong=false; this.red--}
@@ -86,4 +85,62 @@ export class HomePage implements OnInit{
   }
 
 
+
+carr = [
+  {
+    section:'saludos',
+    selected:true
+  },
+  {
+    section:'despedidas',
+    selected:false
+  },
+  {
+    section:'restaurante',
+    selected:false
+  },
+  {
+    section:'telefono',
+    selected:false
+  },
+]
+  
+sliderConfigMovie = {
+  slidesPerView: 2.7      
 }
+
+
+reset(){
+  this.correctselected=false;
+  this.wrongselected=false;
+  this.green=0;
+  this.red=0
+  for (let index in this.palabras){
+    this.palabras[index].correct=false;
+    this.palabras[index].worng=false;    
+  }
+}
+
+
+
+selectsec(obj){
+  let index = this.carr.indexOf(obj)
+  this.carr[index].selected = !this.carr[index].selected 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}//class

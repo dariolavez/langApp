@@ -19,7 +19,7 @@
 }
 #letterZone ion-card{
   width: 90%;
-  height: 350px;
+  height: 250px;
   margin-top: 10px !important;
   
 }
@@ -202,3 +202,39 @@ ion-modal ion-toolbar {
 
 
 }
+
+
+.reiniciar {
+  width:100%;
+  height:auto; 
+  display: flex;
+  justify-content:center;
+  margin-top:10px;
+}
+
+.slide-buttons-selected {
+  padding: 12px 12px 12px 12px; 
+  border-radius: 20px;  
+  border: solid black; 
+  border-width: 1px; 
+  background-color: white;
+}
+
+.slide-buttons-not-selected {
+  padding: 12px 12px 12px 12px; 
+  border-radius: 20px;  
+  border: solid black; 
+  border-width: 1px; 
+  background-color: white;
+  opacity: .2;
+}
+
+
+
+
+
+
+
+
+
+

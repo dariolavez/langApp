@@ -1,7 +1,25 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <!-- <ion-text>Предметы: {{palabras.length}}</ion-text> -->
-    <ion-text>Objetos: {{palabras.length}}</ion-text>
+    <div>
+      <div><ion-text>Objetos: {{palabras.length}}</ion-text></div>
+      <div [ngStyle]="{'width':'100%', 'height':'auto', 'text-align':'center', 'margin-top':'10px'}">
+        <ion-text [ngStyle]="{'font-size':'30px'}">Frases Basicas</ion-text>
+      </div>
+      <div style="margin-top:10px">
+          <ion-slides style="height: 60px" [options]="sliderConfigMovie">
+            <ion-slide *ngFor="let c of carr">
+              <div (click)="selectsec(c)" [ngClass]=" c.selected ? 'slide-buttons-selected' : 'slide-buttons-not-selected' ">
+                <ion-label>{{c.section}}</ion-label>
+              </div>
+            </ion-slide>
+          </ion-slides>
+      </div>
+      <div class="reiniciar" >
+        <ion-button (click)="reset()">Reiniciar</ion-button>
+      </div>
+    </div>
+    
     <div id="letterZone">
       <div [ngStyle]="{'width':'90%', 'display':'flex', 'justify-content':'space-between'}">
         <div> 
