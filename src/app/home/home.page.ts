@@ -122,7 +122,6 @@ reset(){
 }
 
 
-
 selectsec(obj){
   let index = this.carr.indexOf(obj)
   this.carr[index].selected = !this.carr[index].selected 
