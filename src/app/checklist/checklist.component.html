@@ -1,3 +1,43 @@
-<p>
-  checklist works!
-</p>
+<ion-header class="ion-text-center" mode="ios">
+  <h1>Checklist</h1>
+</ion-header>
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header class="ion-text-center">
+      <ion-card-subtitle>Choose what to practice</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op1"></ion-checkbox>
+        <ion-label>Frases Basicas</ion-label>
+      </ion-item>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op2"></ion-checkbox>
+        <ion-label>Verbos</ion-label>
+      </ion-item>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op3"></ion-checkbox>
+        <ion-label>Adjetivos</ion-label>
+      </ion-item>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op4"></ion-checkbox>
+        <ion-label>Sustantivos</ion-label>
+      </ion-item>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op5"></ion-checkbox>
+        <ion-label>Dichos</ion-label>
+      </ion-item>
+
+      <ion-item (click)="op1=!opt1">
+        <ion-checkbox color="primary" slot="start" [checked]="op6"></ion-checkbox>
+        <ion-label>Gramatica</ion-label>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

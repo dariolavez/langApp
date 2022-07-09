@@ -1,8 +1,8 @@
-<ion-tabs (ionTabsDidChange)="sss()">
-  <ion-tab-bar slot="bottom">
+<ion-tabs (ionTabsDidChange)="sss()" >
+  <ion-tab-bar slot="bottom" style="box-shadow: 0px 5px 7px;">
     <ion-tab-button tab="home" [ngClass]="selectedTabHome ? 'selected-tab' : 'not-selected-tab' ">
       <!-- <ion-icon name="flag-outline"></ion-icon> -->
-      <img [ngClass]="selectedTabHome ? 'flag-style' : 'not-flag-style' " src="../../../assets/icon/Flag_of_Russia.svg.webp">
+      <img [ngClass]="selectedTabHome ? 'flag-style' : 'not-flag-style' " [src]="imagen">
       <ion-label>Language</ion-label>
     </ion-tab-button>
 

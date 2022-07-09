@@ -13,6 +13,9 @@ export class TabsComponent implements OnInit {
 
   @ViewChild(IonTabs) tabs:IonTabs;
 
+
+  imagen="../../../assets/icon/Flag_of_Russia.svg.webp"
+
   constructor() { }
 
   ngOnInit() {}
