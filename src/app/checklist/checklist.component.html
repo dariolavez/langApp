@@ -6,36 +6,11 @@
     <ion-card-header class="ion-text-center">
       <ion-card-subtitle>Choose what to practice</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content >
 
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op1"></ion-checkbox>
-        <ion-label>Frases Basicas</ion-label>
-      </ion-item>
-
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op2"></ion-checkbox>
-        <ion-label>Verbos</ion-label>
-      </ion-item>
-
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op3"></ion-checkbox>
-        <ion-label>Adjetivos</ion-label>
-      </ion-item>
-
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op4"></ion-checkbox>
-        <ion-label>Sustantivos</ion-label>
-      </ion-item>
-
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op5"></ion-checkbox>
-        <ion-label>Dichos</ion-label>
-      </ion-item>
-
-      <ion-item (click)="op1=!opt1">
-        <ion-checkbox color="primary" slot="start" [checked]="op6"></ion-checkbox>
-        <ion-label>Gramatica</ion-label>
+      <ion-item *ngFor="let op of opciones" (click)="op.checked=!op.checked" >
+        <ion-checkbox color="primary" slot="start" [checked]="op.checked"></ion-checkbox>
+        <ion-label>{{op.label}}</ion-label>
       </ion-item>
 
     </ion-card-content>

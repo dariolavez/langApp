@@ -19,7 +19,7 @@
           </ion-slides>
       </div>
       <div class="reiniciar" >
-        <ion-button (click)="reset()">Reiniciar</ion-button>
+        <ion-button mode="ios" color="light" (click)="reset()">Reiniciar</ion-button>
       </div>
     </div>
     
@@ -57,7 +57,6 @@
         <div [ngClass]="{'wrongunselected':!wrongselected, 'wrongselected':wrongselected}" (click)="votewrong(wordindex)"></div>
         <div [ngClass]="{'correctunselected':!correctselected, 'correctselected':correctselected}" (click)="votecorrect(wordindex)"></div>
       </div>
-
     </div>
 
     

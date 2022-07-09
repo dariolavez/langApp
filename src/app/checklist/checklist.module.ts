@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { ChecklistComponent } from './checklist.component';
 import { ChecklistPageRoutingModule } from './checklist-routing.module';
 
@@ -9,7 +10,8 @@ import { ChecklistPageRoutingModule } from './checklist-routing.module';
   declarations: [ChecklistComponent],
   imports: [
     CommonModule,
-    ChecklistPageRoutingModule 
+    ChecklistPageRoutingModule,
+    IonicModule
   ]
 })
 export class ChecklistModule { }

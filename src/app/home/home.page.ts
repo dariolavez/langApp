@@ -89,10 +89,14 @@ export class HomePage implements OnInit{
 carr = [
   {
     section:'saludos',
-    selected:true
+    selected:false
   },
   {
     section:'despedidas',
+    selected:false
+  },
+  {
+    section:'frases',
     selected:false
   },
   {
