@@ -1,13 +1,13 @@
-<ion-tabs>
+<ion-tabs (ionTabsDidChange)="sss()">
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="flag-outline"></ion-icon>
+    <ion-tab-button tab="home" [ngClass]="selectedTabHome ? 'selected-tab' : 'not-selected-tab' ">
+      <!-- <ion-icon name="flag-outline"></ion-icon> -->
+      <img [ngClass]="selectedTabHome ? 'flag-style' : 'not-flag-style' " src="../../../assets/icon/Flag_of_Russia.svg.webp">
       <ion-label>Language</ion-label>
-      <ion-badge>6</ion-badge>
     </ion-tab-button>
 
-     <ion-tab-button tab="checklist">
-      <ion-icon name="newspaper-outline"></ion-icon>
+     <ion-tab-button tab="checklist" [ngClass]="selectedTabChecklist ? 'selected-tab' : 'not-selected-tab' ">
+      <ion-icon style="height: 30px; width:30px" [name]="selectedTabChecklist ? 'newspaper' : 'newspaper-outline' "></ion-icon>
       <ion-label>Checklist</ion-label>
     </ion-tab-button>
 <!--
