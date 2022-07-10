@@ -205,13 +205,7 @@ ion-modal ion-toolbar {
 }
 
 
-.reiniciar {
-  width:100%;
-  height:auto; 
-  display: flex;
-  justify-content:center;
-  margin-top:10px;
-}
+
 
 .slide-buttons-selected {
   padding: 12px 12px 12px 12px; 
@@ -230,10 +224,24 @@ ion-modal ion-toolbar {
   opacity: .2;
 }
 
+.aleatorio-boton {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+
+  height: 50px; 
+  width: 130px; 
+  background-color: #f4f5f8;
+  border-radius: 10px;
+}
 
 
-
-
+.aleatorio-y-reiniciar {
+  display: flex; 
+  align-items: center; 
+  margin-top: 10px; 
+  justify-content:space-evenly;
+}
 
 
 

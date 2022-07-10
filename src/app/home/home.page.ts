@@ -53,12 +53,13 @@ export class HomePage implements OnInit{
   }
  
   
-  word:any="";
-  wordindex:number;
+  word:any="";//muestra la palabra en espanol y ruso en el card
+  wordindex:number;//
   arrCounter = []
   counter:number=0
   next(){
-    if(this.palabras.length!=0){
+    //si el array no esta vacio y sin-repeticiones esta apagado
+    if(this.palabras.length!=0 && this.aleatorio==false){
       let number = Math.floor(Math.random() * this.palabras.length)
       this.word = this.palabras[number]
       this.wordindex = number
@@ -70,6 +71,31 @@ export class HomePage implements OnInit{
         this.arrCounter.push(this.palabras[number])
         this.counter++
         console.log(this.counter, this.palabras[number].espanol)
+    }
+    //si se activa "sin repeticiones"
+    else if (this.aleatorio==true){
+      
+      if(this.palabras.length == this.palabrasrandom.length) this.reset()
+      let number;
+      let encontrao;
+      do{
+        number = Math.floor(Math.random() * this.palabras.length)
+        encontrao = this.palabrasrandom.find(el=>el===this.palabras[number])
+        if(encontrao==undefined){
+          this.palabrasrandom.push(this.palabras[number]); 
+          this.word=this.palabras[number]; 
+          this.wrongselected = this.palabras[number].wrong      
+          this.correctselected = this.palabras[number].correct
+          console.log(this.palabrasrandom)}
+        
+      }while(encontrao!=undefined)
+
+      
+ 
+
+
+
+
     }
   }
 
@@ -87,14 +113,17 @@ export class HomePage implements OnInit{
     //si el rojo esta prendido, apagalo de la vista, del objeto, y restale 1 pto
     if(this.wrongselected){this.red--;this.wrongselected=false;this.palabras[number].wrong=false;}
     //sino, prendelo en la vista, en el objeto, y sumale 1 pto
-    else{this.red++;this.wrongselected=true;this.palabras[number].wrong=true}
+    else if(this.aleatorio==false){this.red++;this.wrongselected=true;this.palabras[number].wrong=true}
+    else {{this.red++;this.wrongselected=true;}}
   }
 
+  //para el class de correct selected
   correctselected:boolean=false
   votecorrect(number:number){
     if(this.wrongselected){this.wrongselected=false; this.palabras[number].wrong=false; this.red--}
     if(this.correctselected){this.green--;this.correctselected=false; this.palabras[number].correct=false;}
-    else{this.green++;this.correctselected=true;this.palabras[number].correct=true}
+    else if(this.aleatorio==false){this.green++;this.correctselected=true;this.palabras[number].correct=true}
+    else {{this.green++;this.correctselected=true;}}
   }
 
 
@@ -111,31 +140,62 @@ reset(){
   this.wrongselected=false;
   this.green=0;
   this.red=0
+  this.counter = 1
+  this.palabrasrandom = []
   for (let index in this.palabras){
     this.palabras[index].correct=false;
     this.palabras[index].worng=false;    
   }
 }
 
-/* 
+
 selectsec(obj){
-  let index = this.carr.indexOf(obj)
-  this.carr[index].selected = !this.carr[index].selected 
+  let index = this.categorias.indexOf(obj)
+  this.categorias[index].selected = !this.categorias[index].selected 
 }
 
+
+
+
+
+aleatorio:boolean=false
+palabrasrandom = []
+toggleAleatorio(){
+  this.aleatorio = !this.aleatorio  
+  this.reset()
+  if(this.palabras.length!=0 && this.aleatorio==true){
+   
+/*
+    this.palabrasrandom=[]
+    let coun = 0 
+/* no funciona no se por que
+    do{     
+      let number = Math.floor(Math.random() * this.palabras.length)      
+      let pal = this.palabras[number]     
+      let el = this.palabrasrandom.find((element)=>{        
+        return element===this.palabras[number]        
+        })
+  
+     if(el==undefined){this.palabrasrandom.push(pal); coun++}    
+    console.log(coun) 
+    }while(coun<=this.palabras.length)
  */
+/* 
+  this.palabrasrandom = []
+  let number;
+  let count = 0
+  do{
+    number = Math.floor(Math.random() * this.palabras.length)
+    let encontrao = this.palabrasrandom.find(el=>el===this.palabras[number])
+    if(encontrao==undefined){this.palabrasrandom.push(this.palabras[number]); }
+    count++
+    }while(this.palabrasrandom.length!=this.palabras.length)
+
+     */
+}//if
 
 
-
-
-
-
-
-
-
-
-
-
+}
 
 
 }//class

@@ -4,12 +4,13 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <!-- <ion-text>Предметы: {{palabras.length}}</ion-text> -->
-    <div>
-      <!-- <div><ion-text>Objetos: {{palabras.length}}</ion-text></div> -->
-      <div [ngStyle]="{'width':'100%', 'height':'auto', 'text-align':'center', 'margin-top':'10px'}">
-        <!-- <ion-text [ngStyle]="{'font-size':'30px'}">Frases Basicas</ion-text> -->
-      </div>
-      <div style="margin-top:10px">
+    <div >
+
+   
+
+
+
+        <div style="margin-top:10px">
           <ion-slides style="height: 60px" [options]="sliderConfigMovie">
             <ion-slide *ngFor="let c of categorias">
               <div (click)="selectsec(c)" [ngClass]=" c.selected ? 'slide-buttons-selected' : 'slide-buttons-not-selected' ">
@@ -17,17 +18,33 @@
               </div>
             </ion-slide>
           </ion-slides>
-      </div>
-      <div class="reiniciar" >
-        <ion-button mode="ios" color="light" (click)="reset()">Reiniciar</ion-button>
-      </div>
+        </div>
+
+
+
+        <div class="aleatorio-y-reiniciar">
+          <div class="aleatorio-boton" (click)="toggleAleatorio()">  
+            <ion-label>Aleatorio</ion-label>         
+            <ion-checkbox style="margin-left: 15px;" color="primary" [checked]="aleatorio"></ion-checkbox>                  
+          </div>
+          <div>
+            <ion-button mode="ios" color="light" (click)="reset()">Reiniciar</ion-button>
+          </div>
+        </div>
+
+
+
+     
+
+
     </div>
     
     <div id="letterZone">
       <div [ngStyle]="{'width':'90%', 'display':'flex', 'justify-content':'space-between'}">
         <div> 
          <!--  <p>Cлова: {{counter}}/{{palabras.length}}</p> -->
-          <p>Palabra: {{counter}}/{{palabras.length}}</p>
+          <p *ngIf="aleatorio==false">Palabra: {{counter}}/{{palabras.length}}</p>
+          <p *ngIf="aleatorio==true">Palabra: {{palabrasrandom.length}}/{{palabras.length}}</p>
         </div>
         <div [ngStyle]="{'display':'flex', 'width':'120px', 'justify-content':'space-between'}">
           <div [ngStyle]="{'display':'flex'}">
