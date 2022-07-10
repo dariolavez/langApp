@@ -8,9 +8,9 @@
     </ion-card-header>
     <ion-card-content >
 
-      <ion-item *ngFor="let op of opciones" (click)="op.checked=!op.checked" >
-        <ion-checkbox color="primary" slot="start" [checked]="op.checked"></ion-checkbox>
-        <ion-label>{{op.label}}</ion-label>
+      <ion-item *ngFor="let l of list" (click)="toggleOption(list.indexOf(l), l)">
+        <ion-checkbox color="primary" slot="start" [checked]="l.checked"></ion-checkbox>
+        <ion-label>{{l.label}}</ion-label>
       </ion-item>
 
     </ion-card-content>

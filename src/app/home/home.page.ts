@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Palavra } from './Palavra';
 import { environment } from 'src/environments/environment.prod';
 //import { environment } from 'src/environments/environment';
+import { ClService } from '../services/cl.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,15 @@ import { environment } from 'src/environments/environment.prod';
 
 export class HomePage implements OnInit{
 
-  constructor(private http:HttpClient) {}
+  subscription:Subscription
+
+  constructor(private http:HttpClient, private cl:ClService) {
+    this.subscription = this.cl.onToggle().subscribe((data)=>{
+      
+      this.categorias = this.cl.getCategories()
+
+    })
+  }
 
   palabras:any =[]
   ngOnInit(): void {
@@ -33,7 +42,11 @@ export class HomePage implements OnInit{
       this.next()
     
     })  
-  }
+    this.categorias = this.cl.getCategories()
+
+
+
+  }//ngOnInit
 
   getItems(): Observable<Palavra[]>{
     return this.http.get<Palavra[]>(environment.getwords)     
@@ -86,28 +99,7 @@ export class HomePage implements OnInit{
 
 
 
-carr = [
-  {
-    section:'saludos',
-    selected:false
-  },
-  {
-    section:'despedidas',
-    selected:false
-  },
-  {
-    section:'frases',
-    selected:false
-  },
-  {
-    section:'restaurante',
-    selected:false
-  },
-  {
-    section:'telefono',
-    selected:false
-  },
-]
+categorias = []
   
 sliderConfigMovie = {
   slidesPerView: 2.7      
@@ -125,13 +117,13 @@ reset(){
   }
 }
 
-
+/* 
 selectsec(obj){
   let index = this.carr.indexOf(obj)
   this.carr[index].selected = !this.carr[index].selected 
 }
 
-
+ */
 
 
 

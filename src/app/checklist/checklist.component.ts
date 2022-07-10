@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClService } from '../services/cl.service';
+import { Subscription } from 'rxjs'; 
 
 @Component({
   selector: 'app-checklist',
@@ -7,38 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChecklistComponent implements OnInit {
 
-  constructor() { }
+  subscription: Subscription;
 
-  ngOnInit() {}
+  constructor(private cl:ClService) { 
+    this.subscription = this.cl.onToggle().subscribe((data)=>{this.list=data})
+  }
+
+  ngOnInit() {
+    this.list = this.cl.getList()
+  }
+
+list = []
 
 
-  opciones = [
-    {
-      label: 'Vocabulario',
-      checked: false
-    },
-    {
-      label: 'Verbos',
-      checked: false
-    },
-    {
-      label: 'Adjetivos',
-      checked: false
-    },
-    {
-      label: 'Sustantivos',
-      checked: false
-    },
-    {
-      label: 'Dichos',
-      checked: false
-    },
-    {
-      label: 'Gramatica',
-      checked: false
-    }    
-  ]
 
+
+toggleOption(index, op){
+  this.cl.toggleOption(index, !op.checked)
+}
 
 
 
